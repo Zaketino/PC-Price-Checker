@@ -1,0 +1,34 @@
+name: Scheduled Price Check
+on:
+    schedule:
+    - cron: '0 */6 * * *' # every 6 hours
+    workflow_dispatch: {}
+
+
+jobs:
+    run-scrape:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+        - name: Setup Node
+          uses: actions/setup-node@v4
+          with:
+            node-version: '18'
+        - name: Install
+          run: npm ci
+        - name: Run scraper
+          env:
+            SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+            SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+            MAILERSEND_API_KEY: ${{ secrets.MAILERSEND_API_KEY }}
+            MAIL_FROM: ${{ secrets.MAIL_FROM }}
+            ALERT_TO: ${{ secrets.ALERT_TO }}
+            PRICEAPI_KEY: ${{ secrets.PRICEAPI_KEY }}
+            KEEPA_API_KEY: ${{ secrets.KEEPA_API_KEY }}
+            SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+            WATCHER_ITEMS: ${{ secrets.WATCHER_ITEMS }}
+          run: node src/run-scrape.js
+
+
+# NOTE: Set WATCHER_ITEMS as a GitHub Secret if you prefer configuring items via env. Otherwise add items via Supabase `items` table.
