@@ -32,11 +32,11 @@ This repo is optimized for **free deployment**: use Supabase free tier, MailerSe
 
 ## Quick Start
 1. Create accounts and keys:
-- Supabase project (free tier): copy `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` into GitHub Secrets.
-- MailerSend: create API key `MAILERSEND_API_KEY`.
-- PriceAPI (or another partner that supports Geizhals/Idealo): `PRICEAPI_KEY`.
-- Keepa API key for Amazon: `KEEPA_API_KEY` (optional but recommended for Amazon tracking).
-- SerpApi key for Google Shopping results: `SERPAPI_KEY` (optional).
+    - Supabase project (free tier): copy `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` into GitHub Secrets.
+    - MailerSend: create API key `MAILERSEND_API_KEY`.
+    - PriceAPI (or another partner that supports Geizhals/Idealo): `PRICEAPI_KEY`.
+    - Keepa API key for Amazon: `KEEPA_API_KEY` (optional but recommended for Amazon tracking).
+    - SerpApi key for Google Shopping results: `SERPAPI_KEY` (optional).
 2. Create a GitHub repo and push files.
 3. Add GitHub Secrets (see `.github/workflows/schedule.yml` for names). Add your `WATCHER_ITEMS` JSON or configure items using Supabase directly.
 4. From Supabase SQL editor, run `supabase/migrations.sql` to create tables.

@@ -1,0 +1,3 @@
+- This project prefers official APIs. PriceAPI (paid tiers) is recommended for Geizhals/Idealo/Austria price data. Keepa is the most reliable Amazon price history provider.
+- HTML scraping fallback is included only for small vendor pages; **check robots.txt and TOS** of each site.
+- For large volumes or production usage, consider upgrading to paid API tiers and a small VM or serverless paid plan.
